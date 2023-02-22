@@ -1,19 +1,18 @@
 
 import numpy as np
-from ConvQNetwork import DeepQNetwork
 
 from agents import DQNAgent
 from utils import make_env, plot_learning_curve
 
 if __name__=='__main__':
-    env = make_env("ALE/PongNoFrameskip-v4")
-    best_Score = -np.inf
+    env = make_env("PongNoFrameskip-v4")
+    best_score = -np.inf
     load_checkpoint = False
     n_games = 500
-    agent = DQNAgent(gamma=0.99, epsilom=1.0, lr=0.0001,
+    agent = DQNAgent(gamma=0.99, epsilon=1.0, lr=0.0001,
                      input_dims = env.observation_space.shape,
                      n_actions = env.action_space.n, mem_size=50000, eps_min=0.1,
-                     batch_size=32, replace=1000, eps_dec=1e-5, chpt_dir='models/', algo='DQNagent',
+                     batch_size=32, replace=1000, eps_dec=1e-5, chkpt_dir='models/', algo='DQNagent',
                       env_name='PongNoFrameskip-v4')
 
     if load_checkpoint:
